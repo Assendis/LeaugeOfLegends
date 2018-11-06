@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace LeagueOfLegends
+namespace ConsoleApplication3
 {
     interface Character
     {
@@ -21,6 +21,7 @@ namespace LeagueOfLegends
             get;
             set;
         }
+
     }
 
     class Warrior : Character
@@ -45,6 +46,8 @@ namespace LeagueOfLegends
         {
             HealtyValue += value;
         }
+
+
     }
 
     class Magician : Character
@@ -64,6 +67,8 @@ namespace LeagueOfLegends
         {
             HealtyValue += value;
         }
+
+
     }
 
     class Support : Character
@@ -83,21 +88,22 @@ namespace LeagueOfLegends
         {
             PowerOfAttack += value;
         }
+
+
     }
 
     class Program
     {
+
         static void Main(string[] args)
         {
-            string characterChoice;
-            string healthEquipmentChoice;
-            string attackEquipmentChoice;
+            string characterChoice = string.Empty;
+            string healthEquipmentChoice = string.Empty;
+            string attackEquipmentChoice = string.Empty;
 
             Console.WriteLine("Pick a character!");
             Console.WriteLine("Warrior: 1\nMagician: 2\nSupport: 3");
-
             characterChoice = Console.ReadLine();
-
 
             switch (characterChoice)
             {
@@ -123,13 +129,7 @@ namespace LeagueOfLegends
                     else if (attackEquipmentChoice == "2")
                         warrior.PickAttackEquipment(50);
 
-                    Console.WriteLine("------------------------------");
-                    Console.WriteLine("Tip           : Savaşçı");
-                    Console.WriteLine("İsim          : " + warrior.Name);
-                    Console.WriteLine("Sağlık Değeri : " + warrior.HealtyValue);
-                    Console.WriteLine("Atak Gücü     : " + warrior.PowerOfAttack);
-                    Console.ReadKey();
-
+                    WriteCharacter("Savaşçı", warrior.Name, warrior.HealtyValue, warrior.PowerOfAttack);
                     break;
 
                 case "2":
@@ -144,13 +144,7 @@ namespace LeagueOfLegends
                     else if (healthEquipmentChoice == "2")
                         magician.PickHealthEquipment(30);
 
-                    Console.WriteLine("------------------------------");
-                    Console.WriteLine("Tip           : Büyücü");
-                    Console.WriteLine("İsim          : " + magician.Name);
-                    Console.WriteLine("Sağlık Değeri : " + magician.HealtyValue);
-                    Console.WriteLine("Atak Gücü     : " + magician.PowerOfAttack);
-                    Console.ReadKey();
-
+                    WriteCharacter("Büyücü", magician.Name, magician.HealtyValue, magician.PowerOfAttack);
                     break;
 
                 case "3":
@@ -165,18 +159,23 @@ namespace LeagueOfLegends
                     else if (attackEquipmentChoice == "2")
                         support.PickAttackEquipment(20);
 
-                    Console.WriteLine("------------------------------");
-                    Console.WriteLine("Tip           : Destek");
-                    Console.WriteLine("İsim          : " + support.Name);
-                    Console.WriteLine("Sağlık Değeri : " + support.HealtyValue);
-                    Console.WriteLine("Atak Gücü     : " + support.PowerOfAttack);
-                    Console.ReadKey();
-
+                    WriteCharacter("Destek", support.Name, support.HealtyValue, support.PowerOfAttack);
                     break;
 
                 default:
                     break;
             }
         }
+
+        public static void WriteCharacter(string tur, string name, int health, int attack)
+        {
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("Tip           : " + tur);
+            Console.WriteLine("İsim          : " + name);
+            Console.WriteLine("Sağlık Değeri : " + health);
+            Console.WriteLine("Atak Gücü     : " + attack);
+            Console.ReadKey();
+        }
+
     }
 }
