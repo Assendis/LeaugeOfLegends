@@ -1,6 +1,6 @@
 using System;
 
-namespace ConsoleApplication3
+namespace LeaugeOfLegends
 {
     interface Character
     {
